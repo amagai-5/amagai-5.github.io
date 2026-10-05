@@ -7,100 +7,121 @@
 <meta name="description" content="Sogo Amagai's portfolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f2f4f7; --panel:#ffffff; --ink:#172033; --muted:#5b6578;
-  --line:#d9dee7; --accent:#2f3f9e; --accent-soft:#e6e9fa; --gold:#b9820a;
-  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
-  --sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#111827; --muted:#5d6678;
+  --line:#dde1e8; --accent:#1f4fd8; --accent-soft:#e7edfd; --gold:#a8730a; --dot:#d5dae3;
+  --sans:"IBM Plex Sans","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0f1420; --panel:#171e2e; --ink:#e8ecf5; --muted:#9aa5bb;
-    --line:#2a3348; --accent:#9fb0ff; --accent-soft:#222c52; --gold:#e6b84a;
+    --bg:#0b1020; --panel:#121a2e; --ink:#e9edf7; --muted:#97a2b8;
+    --line:#242e47; --accent:#8aa8ff; --accent-soft:#1a2748; --gold:#e0b04a; --dot:#1c2540;
   }
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:24px}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.8;font-size:16px}
+html{scroll-behavior:smooth;scroll-padding-top:32px}
+body{margin:0;background:var(--bg);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:22px 22px;
+  color:var(--ink);font-family:var(--sans);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
 a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
-.layout{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:56px;padding:64px 24px}
+.layout{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:72px;padding:72px 28px}
 
 /* Sidebar */
-aside{position:sticky;top:64px;align-self:start}
-.avatar{width:112px;height:112px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;
-  font-family:var(--serif);font-size:44px;color:var(--accent);margin-bottom:20px;overflow:hidden}
+aside{position:sticky;top:72px;align-self:start}
+.avatar{width:96px;height:96px;border-radius:24px;background:var(--accent);display:grid;place-items:center;
+  font-weight:600;font-size:34px;letter-spacing:-.02em;color:#fff;margin-bottom:28px;overflow:hidden}
 .avatar img{width:100%;height:100%;object-fit:cover}
-h1{font-family:var(--serif);font-size:32px;line-height:1.3;margin:0}
-.en{color:var(--muted);font-size:14px;margin:2px 0 14px;letter-spacing:.04em}
-.role{margin:0 0 20px;font-size:15px}
-nav ul{list-style:none;padding:0;margin:0 0 24px;border-left:2px solid var(--line)}
-nav a{display:block;padding:4px 0 4px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;font-size:15px}
-nav a:hover,nav a.on{color:var(--accent);border-left-color:var(--accent)}
-.links{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px}
+h1{font-size:40px;font-weight:600;line-height:1.1;letter-spacing:-.035em;margin:0 0 10px}
+.en{display:none}
+.role{margin:0 0 32px;font-size:15px;color:var(--muted);line-height:1.6}
+nav ul{list-style:none;padding:0;margin:0 0 32px}
+nav a{display:flex;align-items:center;gap:12px;padding:5px 0;color:var(--muted);text-decoration:none;font-size:15px;transition:color .15s}
+nav a::before{content:"";width:12px;height:2px;background:var(--line);transition:width .2s,background .2s}
+nav a:hover,nav a.on{color:var(--ink)}
+nav a.on{font-weight:600}
+nav a.on::before{width:28px;background:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{display:inline-block;padding:6px 16px;border:1px solid var(--line);border-radius:999px;
+  color:var(--ink);text-decoration:none;font-size:14px;background:var(--panel);transition:border-color .15s,color .15s}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.links a.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.links a.primary:hover{opacity:.9;color:#fff}
 
 /* Main */
-main section{margin-bottom:64px}
-h2{font-family:var(--serif);font-size:26px;margin:0 0 24px;padding-bottom:10px;border-bottom:1px solid var(--line)}
-.lead{font-size:17px;max-width:38em;margin:0 0 40px}
+main section{margin-bottom:72px}
+h2{display:flex;align-items:center;gap:18px;font-size:22px;font-weight:600;letter-spacing:-.015em;margin:0 0 28px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.lead{font-size:20px;line-height:1.55;letter-spacing:-.01em;max-width:30em;margin:0 0 40px}
 
-/* Timeline: real sequence, so dates lead */
+/* Timeline: a real sequence, drawn as a trace with a node per entry */
 .tl{list-style:none;margin:0;padding:0}
-.tl li{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:0 0 26px}
-.tl time{color:var(--muted);font-size:14px;padding-top:2px;font-variant-numeric:tabular-nums}
-.tl h3{margin:0;font-size:17px}
+.tl li{position:relative;display:grid;grid-template-columns:150px 1fr;gap:0 40px;padding:0 0 32px}
+.tl li::before{content:"";position:absolute;left:171px;top:.55em;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent)}
+.tl li::after{content:"";position:absolute;left:175px;top:1.5em;bottom:-.3em;width:1px;background:var(--line)}
+.tl li:last-child::after{display:none}
+.tl time{font-family:var(--mono);color:var(--muted);font-size:13px;padding-top:3px;line-height:1.6}
+.tl h3{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1.5}
 .tl p{margin:2px 0 0;color:var(--muted);font-size:15px}
 
 /* Interests */
-.interests{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.interest{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
-.interest h3{margin:0 0 6px;font-size:16px;color:var(--accent)}
-.interest p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.7}
-.skills{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
-.skills span{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:3px 14px;font-size:13.5px}
+.interests{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px 36px}
+.interest{border-top:2px solid var(--ink);padding-top:14px}
+.interest h3{margin:0 0 4px;font-size:16px;font-weight:600}
+.interest p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.65}
+.skills{margin-top:32px;display:flex;flex-wrap:wrap;gap:8px}
+.skills span{background:var(--accent-soft);color:var(--accent);border-radius:8px;padding:4px 12px;font-family:var(--mono);font-size:12.5px;line-height:1.6}
 
 /* Awards */
 .awards{list-style:none;margin:0;padding:0}
-.awards li{display:grid;grid-template-columns:70px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.awards li{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
 .awards li:first-child{padding-top:0}
-.awards .yr{font-family:var(--serif);font-weight:700;color:var(--gold);font-size:20px;line-height:1.5}
-.awards strong{display:block}
-.awards small{color:var(--muted);font-size:14px}
+.awards li:last-child{border-bottom:0}
+.awards .yr{font-family:var(--mono);font-weight:500;color:var(--gold);font-size:15px;padding-top:2px}
+.awards strong{display:block;font-weight:500;line-height:1.6}
 
 /* Publications */
 .pubs{padding:0;margin:0;list-style:none}
-.pubs li{padding:0 0 22px}
-.pubs .t{font-weight:700;display:block}
+.pubs li{padding:2px 0 2px 20px;margin-bottom:28px;border-left:2px solid var(--line);transition:border-color .15s}
+.pubs li:hover{border-left-color:var(--accent)}
+.pubs .t{font-weight:600;display:block;line-height:1.5;margin-bottom:4px}
 .pubs .a{font-size:14.5px;color:var(--muted)}
-.pubs .a b{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
-.pubs .v{font-size:14.5px;font-style:italic}
-.pubs .tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 7px;margin-left:6px;color:var(--muted);font-style:normal}
+.pubs .a b{color:var(--ink);font-weight:600}
+.pubs .v{font-size:14px;color:var(--muted);font-family:var(--mono)}
+.pubs .tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 7px;margin-left:6px;color:var(--muted)}
 .pubs .l{font-size:13.5px;margin-left:8px}
 
 footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px}
 
-@media (max-width:820px){
-  .layout{grid-template-columns:1fr;gap:32px;padding:40px 20px}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr;gap:40px;padding:44px 20px}
   aside{position:static}
-  nav ul{display:flex;flex-wrap:wrap;gap:0 18px;border-left:0}
-  nav a{border-left:0;padding:4px 0;margin:0}
-  .tl li{grid-template-columns:1fr;gap:2px}
+  h1{font-size:34px}
+  nav ul{display:flex;flex-wrap:wrap;gap:0 20px}
+  nav a::before{display:none}
+  .tl li{grid-template-columns:1fr;gap:2px;padding-left:26px}
+  .tl li::before{left:0}
+  .tl li::after{left:4px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
+<!-- Must come AFTER the <style> block so it can override the screen styles when printing / exporting to PDF -->
+<link rel="stylesheet" href="bin/print.css" media="print">
 </head>
 <body>
 <div class="layout">
 
 <aside>
-  <!-- 写真を使う場合: <div class="avatar"><img src="photo.jpg" alt="山田太郎"></div> -->
+  <!-- To use a photo: <div class="avatar"><img src="photo.jpg" alt="Sogo Amagai"></div> -->
   <div class="avatar" aria-hidden="true">AS</div>
   <h1>Sogo Amagai</h1>
-  <p class="en">Sogo Amagai</Ep>
-  <p class="role">Hardware Engineer@Sony Semiconductor Solutions Corporation</p>
+  <p class="en">Sogo Amagai</p>
+  <p class="role">Hardware Engineer, Sony Semiconductor Solutions Corporation</p>
   <nav aria-label="Section">
     <ul>
       <li><a href="#experience">Professional Experience</a></li>
@@ -111,7 +132,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
     </ul>
   </nav>
   <div class="links">
-    <a href="mailto:sogoamagai@gmail.com">Email</a>
+    <a class="primary" href="mailto:sogoamagai@gmail.com">Email</a>
     <a href="https://github.com/amagai-5">GitHub</a>
     <a href="https://www.linkedin.com/in/sogo-amagai-1399b9267">LinkedIn</a>
   </div>
@@ -122,24 +143,25 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
     <h2>Professional Experience</h2>
     <p class="lead">Hardware Engineer focusing on design verification</p>
     <ol class="tl">
-      <li><time>2024.April – Present</time><div><h3>Sony Semiconductor Solutions Corporation</h3><p>CPU Design verification</p></div></li>
+      <li><time>April 2024 – Present</time><div><h3>Sony Semiconductor Solutions Corporation</h3><p>CPU design verification</p></div></li>
     </ol>
   </section>
+
   <section id="education">
     <h2>Education</h2>
     <ol class="tl">
-      <li><time>2021.April – 2024.March</time><div><h3>Master's degree at The University of Tokyo</h3><p>Human and Engineered Environmental Studies, Graduate School of Frontier Sciences</p></div></li>
-      <li><time>2022.April – 2023.March</time><div><h3>Exchange student at Université Jean Monnety, France</h3><p>Cyber-Physical Social Systems</p></div></li>
-      <li><time>2014.April – 2021.March</time><div><h3>Bachelor degree at National Institute of Technology, Ibaraki College</h3><p>Electrical and Electroinics Engineering</p></div></li>
+      <li><time>April 2021 – March 2024</time><div><h3>Master's degree at The University of Tokyo</h3><p>Human and Engineered Environmental Studies, Graduate School of Frontier Sciences</p></div></li>
+      <li><time>April 2022 – March 2023</time><div><h3>Exchange student at Université Jean Monnet, France</h3><p>Cyber-Physical Social Systems</p></div></li>
+      <li><time>April 2014 – March 2021</time><div><h3>Bachelor's degree at National Institute of Technology, Ibaraki College</h3><p>Electrical and Electronics Engineering</p></div></li>
     </ol>
   </section>
 
   <section id="awards">
     <h2>Awards</h2>
     <ul class="awards">
-      <li><span class="yr">2024</span><div><strong>Department Head Award on the Department of Human and Engineered Environmental Studies at The University of Tokyo</small></div></li>
-      <li><span class="yr">2024</span><div><strong>Graduate School Research Award by Society of Automotive Engineers of Japan, Inc.</strong></div></li>
-      <li><span class="yr">2021</span><div><strong>Department Head award on the Department of Electrical and Electroinics Engineering at National Instiute of Technlogy, Ibaraki College</small></div></li>
+      <li><span class="yr">2024</span><div><strong>Department Head Award, Department of Human and Engineered Environmental Studies, The University of Tokyo</strong></div></li>
+      <li><span class="yr">2024</span><div><strong>Graduate School Research Award, Society of Automotive Engineers of Japan, Inc.</strong></div></li>
+      <li><span class="yr">2021</span><div><strong>Department Head Award, Department of Electrical and Electronics Engineering, National Institute of Technology, Ibaraki College</strong></div></li>
     </ul>
   </section>
 
@@ -149,31 +171,31 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
       <li>
         <span class="t">Efficient Training Data Collection for Distance Sensor Arrays Through Data Correction and Augmentation Approaches</span>
         <span class="a"><b>Sogo Amagai</b>, Shin’ichi Warisawa and Rui Fukui</span><br>
-        <span class="v"> IEEE Robotics and Automation Letters, vol. 10, no. 6, pp. 6392-6399, 2025</span>
+        <span class="v">IEEE Robotics and Automation Letters, vol. 10, no. 6, pp. 6392-6399, 2025</span>
       </li>
       <li>
         <span class="t">Remote operation system for novice tractor drivers for situations where automatic driving is difficult</span>
         <span class="a"><b>Sogo Amagai</b>, Yuji Fukuoka, Takafumi Fujii, Yushi Matsuzaki, Hiroaki Hosozawa, Takanori Ikegami, Shin’ichi Warisawa and Rui Fukui</span><br>
-        <span class="v">Jounal of Field Robotics, vol. 40, pp. 1346-1362, 2023</span>
+        <span class="v">Journal of Field Robotics, vol. 40, pp. 1346-1362, 2023</span>
       </li>
       <li>
         <span class="t">Clustering of distance sensors to transfer training data for relative position and orientation measurement devices</span>
         <span class="a"><b>Sogo Amagai</b>, Qiwei Ye, Yuji Fukuoka, Shin’ichi Warisawa and Rui Fukui</span><br>
-        <span class="v">ROBOMECH Journal, vol. 9, no. 1, pp. 20, 2022</span>
+        <span class="v">ROBOMECH Journal, vol. 9, no. 1, article 20, 2022</span>
       </li>
     </ul>
   </section>
-  
+
   <section id="interests">
     <h2>Interests</h2>
     <div class="interests">
       <div class="interest"><h3>Hardware verification</h3><p>Hardware verification and methodology</p></div>
-      <div class="interest"><h3>RISC-V</h3><p>RISC-V CPU verification and ecosystems </p></div>
-      <div class="interest"><h3>Programming</h3><p>Sysytem verilog(UVM), C, GAS, Python, Bash, MATLAB</p></div>      
-      <div class="interest"><h3>Language learning</h3><p> English </p></div>      
+      <div class="interest"><h3>RISC-V</h3><p>RISC-V CPU verification and ecosystems</p></div>
+      <div class="interest"><h3>Programming</h3><p>SystemVerilog (UVM), C, GAS, Python, Bash, MATLAB</p></div>
+      <div class="interest"><h3>Language learning</h3><p>English</p></div>
     </div>
-    <div class="skills" aria-label="skills">
-      <span>Python</span><span>System Verilog(UVM)</span><span>C</span><span>RISC-V(RISC-V Foundational Associate acquired at 2025)</span><span>English (TOEIC 885 scored at 2020)</span>
+    <div class="skills" aria-label="Skills">
+      <span>Python</span><span>SystemVerilog (UVM)</span><span>C</span><span>RISC-V (RISC-V Foundational Associate, acquired in 2025)</span><span>English (TOEIC 885, scored in 2020)</span>
     </div>
   </section>
 

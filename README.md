@@ -1,2 +1,5 @@
-# amagai-5.github.io
-Under construction
+# portfolio
+- how to use
+```bash
+make pdf
+```

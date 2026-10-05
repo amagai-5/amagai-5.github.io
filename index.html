@@ -80,11 +80,12 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* Awards */
 .awards{list-style:none;margin:0;padding:0}
-.awards li{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.awards li{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
 .awards li:first-child{padding-top:0}
 .awards li:last-child{border-bottom:0}
-.awards .yr{font-family:var(--mono);font-weight:500;color:var(--gold);font-size:15px;padding-top:2px}
-.awards strong{display:block;font-weight:500;line-height:1.6}
+.awards .yr{font-family:var(--mono);color:var(--muted);font-size:13px;line-height:1.7;padding-top:2px}
+.awards h3{margin:0;font-size:15.5px;font-weight:500;line-height:1.55}
+.awards p{margin:2px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
 
 /* Publications */
 .pubs{padding:0;margin:0;list-style:none}
@@ -108,6 +109,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
   .tl li{grid-template-columns:1fr;gap:2px;padding-left:26px}
   .tl li::before{left:0}
   .tl li::after{left:4px}
+  .awards li{grid-template-columns:52px 1fr;gap:14px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -160,9 +162,10 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
   <section id="awards">
     <h2>Awards</h2>
     <ul class="awards">
-      <li><span class="yr">2024</span><div><strong>Department Head Award, Department of Human and Engineered Environmental Studies, The University of Tokyo</strong></div></li>
-      <li><span class="yr">2024</span><div><strong>Graduate School Research Award, Society of Automotive Engineers of Japan, Inc.</strong></div></li>
-      <li><span class="yr">2021</span><div><strong>Department Head Award, Department of Electrical and Electronics Engineering, National Institute of Technology, Ibaraki College</strong></div></li>
+      <li><span class="yr">2024</span><div><h3>Department Head Award</h3><p>Human and Engineered Environmental Studies, The University of Tokyo</p></div></li>
+      <li><span class="yr">2024</span><div><h3>Graduate School Research Award</h3><p>Society of Automotive Engineers of Japan, Inc.</p></div></li>
+      <li><span class="yr">2022</span><div><h3>Tobitate! Study Abroad Program Scholarship</h3><p>Japanese Government (MEXT) · Undergraduate University Student Course</p></div></li>
+      <li><span class="yr">2021</span><div><h3>Department Head Award</h3><p>Department of Electrical and Electronics Engineering, National Institute of Technology, Ibaraki College</p></div></li>
     </ul>
   </section>
 
